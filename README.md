@@ -55,13 +55,15 @@ Account:
     docker exec eth_gethtest_1 geth --testnet account list
 
 
-Use the python script to check data. If can send few ether 0.001 to this new account and try the sendTransaction fonctionnality.
+Use the python script to check data and to send eth between the two node
 	
 	apt-get install python3-pip
 	pip3 install --upgrade pip
 	pip3 install web3
 
 	python3 checkParityNode.py
+
+Use faucet to get eth-test credit: http://www.etherfaucet.net/
 
 Or classic curl
 

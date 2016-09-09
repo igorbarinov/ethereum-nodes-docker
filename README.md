@@ -12,17 +12,16 @@ I use this setup for production
 
 # 0. Prerequisit:
 
-Ubuntu or other flavor
-Docker
-docker-compose
+- Ubuntu or other flavor
+- Docker
+- docker-compose
 
 Account info:
-geth
-gethtest: 0x881bce7131857c9d24effdbe39ea974fd3c43e50
-parity:
-paritytest: 0x9e6c69b73f5808a25404edcf7eac7bf8ee935568
-
-Password: notsecure
+- geth
+- gethtest: 0x881bce7131857c9d24effdbe39ea974fd3c43e50
+- parity:
+- paritytest: 0x9e6c69b73f5808a25404edcf7eac7bf8ee935568
+- password: notsecure
 
 # 1. Setup git
 
@@ -34,21 +33,20 @@ Run the script for create data volume to store: account&password, blockchaindata
 
     ./deploy-init.sh
 
-If you want to use a fresh new wallet for paritytest:
+If you want to use a fresh new wallet:
 
     docker run --rm -it -v eth_paritytest:/root/.parity ethcore/parity -testnet account new
-	#OR docker exec -it parity bash -c "/build/parity/target/release/parity --testnet --password <(echo -n notsecure) account new"
+    #OR docker exec -it parity bash -c "/build/parity/target/release/parity --testnet --password <(echo -n notsecure) account new"
     ls /var/lib/docker/volumes/eth_paritytest/_data/testnet_keys/  <-- your test wallet is here
 
-	docker run --rm -it -v eth_gethtest:/root/.ethereum ethereum/client-go --testnet account new
+    docker run --rm -it -v eth_gethtest:/root/.ethereum ethereum/client-go --testnet account new
     ls /var/lib/docker/volumes/eth_gethtest/_data/testnet/keystore/  <-- your test wallet is here
-
 
 And setup password:
 
     echo -n 'notsecure' > /var/lib/docker/volumes/eth_paritytest/_data/testnet_keys/mypass     <-- unsure that there is no space or new line in file: don't use nano, it leave a new line!!
 
-	
+
 # 4. Checks 
 
 Account:
@@ -72,7 +70,7 @@ Or classic curl
 		
 # help
     
-	docker run -ti ethcore/parity --help
+    docker run -ti ethcore/parity --help
 	
-https://github.com/ethereum/wiki/wiki/JavaScript-API#web3versionnode
-https://github.com/ethereum/wiki/wiki/JSON-RPC
+- https://github.com/ethereum/wiki/wiki/JavaScript-API#web3versionnode
+- https://github.com/ethereum/wiki/wiki/JSON-RPC

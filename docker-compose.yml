@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+
+#  geth:
+#    image: ethereum/client-go
+#    volumes:
+#      - geth:/root/.ethereum
+#    ports:
+#      - 8542:8545
+#    command: "--rpc --rpcaddr 0.0.0.0 --password /root/.ethereum/mypass --unlock 0"
+
+  gethtest:
+    image: ethereum/client-go
+    volumes:
+      - gethtest:/root/.ethereum
+    ports:
+      - 8543:8545
+    command: "--rpc --rpcaddr 0.0.0.0 --password /root/.ethereum/mypass --unlock 0 --testnet"
+
+#  parity:
+#    image: ethcore/parity
+#    volumes:
+#      - parity:/root/.parity
+#    ports:
+#      - 8544:8545
+#    command: "--jsonrpc-interface all --jsonrpc-hosts all --unlock 0x... --password /root/.parity/mypass
+
+  paritytest:
+    image: ethcore/parity
+    volumes:
+      - paritytest:/root/.parity
+    ports:
+      - 8545:8545
+    command: "--jsonrpc-interface all --jsonrpc-hosts all --unlock 0x9e6c69b73f5808a25404edcf7eac7bf8ee935568 --password /root/.parity/mypass --testnet"
+
+volumes:
+  geth:
+  gethtest:
+  parity:
+  paritytest:

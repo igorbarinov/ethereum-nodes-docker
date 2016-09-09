@@ -14,9 +14,9 @@ I use this setup for production
 
 - Ubuntu or other flavor
 - Docker
-- docker-compose
+- Docker-compose
 
-Account info:
+Accounts info:
 - geth
 - gethtest: 0x881bce7131857c9d24effdbe39ea974fd3c43e50
 - parity:
@@ -49,11 +49,10 @@ And setup password:
 
 # 4. Checks 
 
-Account:
+Accounts:
 
     docker exec eth_paritytest_1 /build/parity/target/release/parity --testnet account list
     docker exec eth_gethtest_1 geth --testnet account list
-
 
 Use the python script to check data and to send eth between the two node
 	
@@ -65,14 +64,29 @@ Use the python script to check data and to send eth between the two node
 
 Use faucet to get eth-test credit: http://www.etherfaucet.net/
 
-Or classic curl
+Or classic curl: https://github.com/ethereum/wiki/wiki/JSON-RPC
 
     curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x0037a6b811ffeb6e072da21179d11b1406371c63", "latest"],"id":1}' http://127.0.0.1:8545
 
-		
+# Geth javascript console
+
+You can attach to the geth console to run javascript command: https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console
+
+    docker exec -it eth_gethtest_1 geth attach ipc:/root/.ethereum/testnet/geth.ipc
+    admin
+    admin.peers
+    eth
+    eth.accounts
+
+Or directly:
+
+    docker exec -it eth_gethtest_1 geth --exec 'admin.nodeInfo.name' attach ipc:/root/.ethereum/testnet/geth.ipc
+    docker exec -it eth_gethtest_1 geth --exec 'personal.listAccounts' attach ipc:/root/.ethereum/testnet/geth.ipc
+    docker exec -it eth_gethtest_1 geth --exec 'eth.getBalance(eth.coinbase)' attach ipc:/root/.ethereum/testnet/geth.ipc
+
+
+
 # help
     
     docker run -ti ethcore/parity --help
 	
-- https://github.com/ethereum/wiki/wiki/JavaScript-API#web3versionnode
-- https://github.com/ethereum/wiki/wiki/JSON-RPC

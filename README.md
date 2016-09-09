@@ -3,12 +3,13 @@
 In few commands: (thx to docker compose ;)
 - run both clients (parity & geth)
 - check accounts and status
-- make a transaction (transfert test eth)
+- make a transaction in python (transfert test eth between the nodes)
 
 I use this setup for production
-- data stays on host for easy version migration
+- Data stays on host volumes: container nodes can be destroy without lossing the data --> easy version migration
 - Auto unlock wallets when container is starting (please use firewall to protect your prod nodes!)
  
+
 
 # 0. Prerequisit:
 
@@ -68,7 +69,7 @@ Or classic curl: https://github.com/ethereum/wiki/wiki/JSON-RPC
 
     curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x0037a6b811ffeb6e072da21179d11b1406371c63", "latest"],"id":1}' http://127.0.0.1:8545
 
-# Geth javascript console
+# 5. Geth javascript console
 
 You can attach to the geth console to run javascript command: https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console
 
@@ -84,8 +85,16 @@ Or directly:
     docker exec -it eth_gethtest_1 geth --exec 'personal.listAccounts' attach ipc:/root/.ethereum/testnet/geth.ipc
     docker exec -it eth_gethtest_1 geth --exec 'eth.getBalance(eth.coinbase)' attach ipc:/root/.ethereum/testnet/geth.ipc
 
+# 6. Continuous delivery
 
+You can fix the version of the nodes in:  
+    nano docker-compose.yml > image:ethcore/parity:latest <-- here
 
+Or when a new version of nodes are available in hub.docker.com
+
+    docker-compose pull
+    docker-compose up -d  <-- Your containers are at the latest version !
+    
 # help
     
     docker run -ti ethcore/parity --help

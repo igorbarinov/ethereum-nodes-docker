@@ -29,7 +29,7 @@ Account info:
 
 # 2. Setup Nodes:
 
-Run the script for create data volume to store: account&password, blockchaindata:    
+Run the script to create data volume to store: account&password, blockchaindata:    
 
     ./deploy-init.sh
 

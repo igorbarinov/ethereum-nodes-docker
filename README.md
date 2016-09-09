@@ -36,7 +36,7 @@ Run the script to create data volume to store: account&password, blockchain data
 
 If you want to use a fresh new wallet:
 
-    docker run --rm -it -v eth_paritytest:/root/.parity ethcore/parity -testnet account new
+    docker run --rm -it -v eth_paritytest:/root/.parity ethcore/parity --testnet account new
     #OR docker exec -it parity bash -c "/build/parity/target/release/parity --testnet --password <(echo -n notsecure) account new"
     ls /var/lib/docker/volumes/eth_paritytest/_data/testnet_keys/  <-- your test wallet is here
 

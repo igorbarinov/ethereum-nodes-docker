@@ -28,9 +28,9 @@ Accounts info:
 
     git clone https://github.com/gregbkr/ethereum-nodes && cd eth
 
-# 2. Setup Nodes:
+# 2. Setup ethereum Nodes:
 
-Run the script to create data volume to store: account&password, blockchaindata:    
+Run the script to create data volume to store: account&password, blockchain data:    
 
     ./deploy-init.sh
 
@@ -61,7 +61,7 @@ Use the python script to check data and to send eth between the two node
 	pip3 install --upgrade pip
 	pip3 install web3
 
-	python3 checkParityNode.py
+	python3 checkWeb3.py
 
 Use faucet to get eth-test credit: http://www.etherfaucet.net/
 

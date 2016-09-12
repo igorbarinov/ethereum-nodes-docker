@@ -26,7 +26,7 @@ Accounts info:
 
 # 1. Setup git
 
-    git clone https://github.com/gregbkr/ethereum-nodes && cd eth
+    git clone https://github.com/gregbkr/ethereum-nodes-docker && cd eth
 
 # 2. Setup ethereum Nodes:
 

@@ -1,6 +1,6 @@
 ## Ethereum nodes ##
 
-![Ethereum-nodes-docker.png](https://github.com/gregbkr/ethereum-nodes-docker/raw/master/Ethereum-nodes-docker.png)
+![Ethereum-nodes-docker.png](https://github.com/gregbkr/ethereum-nodes-docker/raw/master/Ethereum-nodes-docker.PNG)
 
 In few commands: (thx to docker compose ;)
 - run both clients (parity & geth)

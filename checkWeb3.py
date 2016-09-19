@@ -1,6 +1,6 @@
 #!usr/bin/python
 # -*- encoding: utf-8 -*-
-# please install: apt-get install python-pip3, pip3 install web3
+# please install: apt-get install python3-pip, pip3 install web3
 
 from web3 import Web3, RPCProvider, IPCProvider
 

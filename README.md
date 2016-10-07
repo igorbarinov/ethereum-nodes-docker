@@ -30,18 +30,29 @@ Accounts info:
 
 # 2. Setup ethereum Nodes:
 
-Run the script to create data volume to store: account&password, blockchain data:    
+Setup local volumes for blockchains
 
-    ./deploy-init.sh
+    docker volume create --name eth_gethtest
+    docker volume create --name eth_paritytest
 
-OR if you want to use a fresh new wallet (and don't use deploy-init.sh)
+Use already existing account and password (nice so you don't have to load ethtest)
+
+    cp -r gethtest/* /var/lib/docker/volumes/eth_gethtest/_data/
+    cp -r paritytest/* /var/lib/docker/volumes/eth_paritytest/_data/
+
+OR if you want to use a fresh new wallet
 
     docker run --rm -it -v eth_paritytest:/root/.parity ethcore/parity --testnet account new
-    #OR docker exec -it parity bash -c "/build/parity/target/release/parity --testnet --password <(echo -n notsecure) account new"
     ls /var/lib/docker/volumes/eth_paritytest/_data/testnet_keys/  <-- your test wallet is here
 
     docker run --rm -it -v eth_gethtest:/root/.ethereum ethereum/client-go --testnet account new
     ls /var/lib/docker/volumes/eth_gethtest/_data/testnet/keystore/  <-- your test wallet is here
+
+OR in a running container
+
+  docker run -d --name geth0 -v eth_gethtest:/root/.ethereum ethereum/client-go --testnet
+  docker exec -it geth0 bash -c "geth --testnet --password <(echo -n notsecure) account new"
+  docker stop geth0 && docker rm geth0
 
 And setup password:
 

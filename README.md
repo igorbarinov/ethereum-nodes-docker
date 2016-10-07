@@ -20,15 +20,13 @@ I use this setup for production
 - Docker-compose
 
 Accounts info:
-- geth
 - gethtest: 0x881bce7131857c9d24effdbe39ea974fd3c43e50
-- parity:
 - paritytest: 0x9e6c69b73f5808a25404edcf7eac7bf8ee935568
 - password: notsecure
 
 # 1. Setup git
 
-    git clone https://github.com/gregbkr/ethereum-nodes-docker && cd eth
+    git clone https://github.com/gregbkr/ethereum-nodes-docker eth && cd eth
 
 # 2. Setup ethereum Nodes:
 
@@ -36,7 +34,7 @@ Run the script to create data volume to store: account&password, blockchain data
 
     ./deploy-init.sh
 
-If you want to use a fresh new wallet:
+OR if you want to use a fresh new wallet (and don't use deploy-init.sh)
 
     docker run --rm -it -v eth_paritytest:/root/.parity ethcore/parity --testnet account new
     #OR docker exec -it parity bash -c "/build/parity/target/release/parity --testnet --password <(echo -n notsecure) account new"
@@ -50,6 +48,10 @@ And setup password:
     echo -n 'notsecure' > /var/lib/docker/volumes/eth_paritytest/_data/testnet_keys/mypass     <-- unsure that there is no space or new line in file: don't use nano, it leave a new line!!
 
 
+# 3. Run containers
+
+    docker-compose up -d
+
 # 4. Checks 
 
 Accounts:
@@ -59,11 +61,15 @@ Accounts:
 
 Use the python script to check data and to send eth between the two node
 	
-	apt-get install python3-pip
+	apt-get install -y python3-pip
 	pip3 install --upgrade pip
 	pip3 install web3
 
 	python3 checkWeb3.py
+
+To make queries on blockchain, your nodes need to be sync? 
+    Syncing?        : No 				<-- you are sync
+    Syncing?        : {'highestBlock': 1743086,...  <-- need to wait more...
 
 Use faucet to get eth-test credit: http://www.etherfaucet.net/
 

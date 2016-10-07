@@ -107,7 +107,9 @@ Or directly:
 # 6. Continuous delivery
 
 You can fix the version of the nodes in:  
-    nano docker-compose.yml > image:ethcore/parity:latest <-- here
+
+    nano docker-compose.yml 
+    image:ethcore/parity:latest   <-- here
 
 Or when a new version of nodes are available in hub.docker.com
 

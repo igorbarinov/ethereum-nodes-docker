@@ -32,6 +32,7 @@ services:
       - paritytest:/root/.parity
     ports:
       - 8545:8545
+      - 8080:8080
     command: "--jsonrpc-interface all --jsonrpc-hosts all --unlock 0x9e6c69b73f5808a25404edcf7eac7bf8ee935568 --password /root/.parity/mypass --testnet"
 
 volumes:

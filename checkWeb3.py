@@ -33,6 +33,7 @@ print ('RemoteAddr = '+remote+'     balance = '+ str(web3.eth.getBalance(remote)
 q= input ('\n--> Send tx of '+str(amountInEther)+' Ether from localAddr0:'+str(web3.eth.accounts[0])+' to remoteAddr:'+str(remote)+' on network '+network+' ? [y/N]')
 
 if q == 'Y' or q=='y':
-  tx = web3.eth.sendTransaction({'from':web3.eth.accounts[0], 'to':remote, 'value': value})
-  print(tx)
+  tx = web3.eth.sendTransaction({'from':web3.eth.accounts[0], 'to':remote, 'value':hex(value), 'gas':hex(gas), 'gasPrice':hex(gasPrice)})
+  print(tx+'\n')
+  print(web3.eth.getTransaction(tx))
 

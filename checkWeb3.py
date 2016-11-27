@@ -17,7 +17,9 @@ value           = web3.toWei(amountInEther,'ether')
 #################################
 
 if web3.version.network == 1: network = 'LIVE(Homestead)'
-if web3.version.network == 2: network = 'TESNET(morden)'
+elif web3.version.network == 2: network = 'TESNET(morden)'
+elif web3.version.network == 3: network = 'TESTNET(ropsten)'
+else: network = 'UNKNOWN'
 
 print ('\n#######  Node info ############## <-- Please edit with your needs!')
 print ('Network		: '+ str(web3.version.network) +' --> '+network)

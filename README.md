@@ -11,7 +11,7 @@ I use this setup for production
 - Data stays on host volumes: container nodes can be destroy without lossing the data --> easy version migration
 - Auto unlock wallets when container is starting (please use firewall to protect your prod nodes!)
  
-
+More info: you can find an overview of that setup on my blog: https://greg.satoshi.tech/
 
 # 0. Prerequisit:
 

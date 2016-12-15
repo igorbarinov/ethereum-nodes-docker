@@ -27,7 +27,7 @@ services:
 #    command: "--jsonrpc-interface all --jsonrpc-hosts all --unlock 0x... --password /root/.parity/mypass
 
   paritytest:
-    image: ethcore/parity:latest
+    image: ethcore/parity:https://github.com/apex/apex
     volumes:
       - paritytest:/root/.parity
     ports:
@@ -36,7 +36,7 @@ services:
     command: "--jsonrpc-interface all --jsonrpc-hosts all --unlock 0x9e6c69b73f5808a25404edcf7eac7bf8ee935568 --password /root/.parity/mypass --testnet"
 
 volumes:
-  geth:
+  # geth:
   gethtest:
-  parity:
+  # parity:
   paritytest:
